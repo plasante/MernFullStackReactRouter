@@ -29,9 +29,9 @@ const Contact = ({cards}) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (stateGlobal) => {
   return {
-    cards: state.cards,
+    cards: stateGlobal.cards,
   };
 }
 export default connect(mapStateToProps)(Contact);

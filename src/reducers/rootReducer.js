@@ -19,8 +19,24 @@ const initialState = {
 
 }
 const rootReducer = (state = initialState, action) => {
-  console.log(action);
-  return state;
+  console.log('action.id = ', action.id);
+  switch (action.type) {
+    case 'DELETE_CARD':
+      if(action.id && action.id !== undefined) {
+        return {
+          ...state,
+          cards: state.cards.filter(card => card.id !== action.id)
+        }
+      }
+      return state;
+    case 'ADD_CARD':
+      return {
+        ...state,
+        cards: [...state.cards, action.payload]
+      };
+    default:
+      return state;
+  }
 }
 
 export default rootReducer;

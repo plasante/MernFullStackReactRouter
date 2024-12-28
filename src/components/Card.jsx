@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 
 // Attaching store state to a component
 const Card = (props) => {
@@ -15,6 +15,7 @@ const Card = (props) => {
   });
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
 
   // Deconstructing the cards object
@@ -22,7 +23,8 @@ const Card = (props) => {
 
   const onButtonClickHandler = () => {
     let id = card.id;
-    dispatch({ type: "DELETE_CARD", id: id })
+    dispatch({ type: "DELETE_CARD", id: id });
+    navigate('/contact')
   }
 
   return (

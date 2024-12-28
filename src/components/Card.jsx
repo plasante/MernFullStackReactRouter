@@ -17,7 +17,7 @@ const Card = (props) => {
   const { title, body } = card;
 
   const users = useSelector((state) => {
-    return state.users.data;
+    return state.users;
   });
 
   useEffect(() => {

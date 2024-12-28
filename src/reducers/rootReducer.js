@@ -19,10 +19,9 @@ const initialState = {
 
 }
 const rootReducer = (state = initialState, action) => {
-  console.log('action.id = ', action.id);
   switch (action.type) {
     case 'DELETE_CARD':
-      if(action.id && action.id !== undefined) {
+      if(action.id !== undefined) {
         return {
           ...state,
           cards: state.cards.filter(card => card.id !== action.id)

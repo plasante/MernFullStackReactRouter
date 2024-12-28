@@ -1,17 +1,26 @@
 import React from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
+// Attaching store state to a component
 const Card = (props) => {
 
-  // Connecting this component to the Redux store
-  const cards = useSelector((state) => {
+  // Connecting this component to the Redux store using the useSelector
+  const card = useSelector((state) => {
     // Getting the user from the URL
     let user = props.match.params.user
     return state.cards.find(card => card.title === user);
   });
 
+  const dispatch = useDispatch();
+
+
   // Deconstructing the cards object
-  const { title, body } = cards;
+  const { title, body } = card;
+
+  const onButtonClickHandler = () => {
+    let id = card.id;
+    dispatch({ type: "DELETE_CARD", id: id })
+  }
 
   return (
     <div>
@@ -21,6 +30,12 @@ const Card = (props) => {
       >
         <h3 className={'ui header'}>{title}</h3>
         <p>{body}</p>
+        <button
+          className={'ui primary right floated button'}
+          onClick={onButtonClickHandler}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );

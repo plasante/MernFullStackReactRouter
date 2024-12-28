@@ -1,13 +1,16 @@
 import React from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import {useParams} from "react-router-dom";
 
 // Attaching store state to a component
 const Card = (props) => {
 
+  let { user } = useParams();
+
   // Connecting this component to the Redux store using the useSelector
   const card = useSelector((state) => {
     // Getting the user from the URL
-    let user = props.match.params.user
+    //let user = props.match.params.user
     return state.cards.find(card => card.title === user);
   });
 

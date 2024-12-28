@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Navbar from "./components/Navbar";
 import 'semantic-ui-css/semantic.min.css';
 import Home from "./components/Home";
@@ -12,12 +12,12 @@ const App = () => {
     <BrowserRouter>
       <div>
         <Navbar/>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/about" exact component={About} />
-          <Route path="/contact" exact component={Contact} />
-          <Route path="/:user" exact component={Card} />
-        </Switch>
+        <Routes>
+          <Route path="/" exact element={<Home />}/>
+          <Route path="/about" element={<About />}/>
+          <Route path="/contact" element={<Contact />}/>
+          <Route path="/:user" element={<Card />}/>
+        </Routes>
       </div>
     </BrowserRouter>
   );
